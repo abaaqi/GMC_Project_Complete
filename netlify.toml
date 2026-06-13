@@ -7,7 +7,7 @@
 
 # Client-side routing fallback
 [[redirects]]
-     from = api
+     from = /api/
      to = "https://gmc-project-complete.onrender.com/api/:splat"
      status = 200
      force = true
