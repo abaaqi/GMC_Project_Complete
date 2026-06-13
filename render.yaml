@@ -1,0 +1,46 @@
+# Render blueprint — deploys the API (web service) and the frontend (static site).
+# MongoDB is not hosted on Render; use MongoDB Atlas and paste its URI into
+# MONGODB_URI in the Render dashboard. Values marked `sync: false` are set there.
+#
+# Note: do NOT set PORT here — Render injects it, and the server reads process.env.PORT
+# and binds 0.0.0.0. Make sure Atlas Network Access allows 0.0.0.0/0 (or Render's IPs).
+
+services:
+  # ---- Backend API ----
+  - type: web
+    name: mahafarm-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false                 # Atlas connection string
+      - key: JWT_SECRET
+        generateValue: true         # Render generates a strong secret
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: COOKIE_SECURE
+        value: "true"               # HTTPS in production
+      - key: CLIENT_URL
+        sync: false                 # the static site URL below
+
+  # ---- Frontend (static) ----
+  - type: web
+    name: mahafarm-web
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false                 # e.g. https://mahafarm-api.onrender.com/api
+      - key: VITE_ENABLE_MOCK_DATA
+        value: "false"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

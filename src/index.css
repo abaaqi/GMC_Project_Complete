@@ -1,0 +1,356 @@
+/* ============================================================
+   MahaFarm — Design System
+   Identity: deep soil-green surfaces, a chartreuse "live data"
+   accent (the AI/sensor signal), amber harvest highlights, and
+   warm paper marketing surfaces. Signature = animated pulse line.
+   ============================================================ */
+
+:root {
+  /* --- Soil greens (surfaces / ink) --- */
+  --soil-950: #0A1610;
+  --soil-900: #0E1F16;
+  --soil-850: #122719;
+  --soil-800: #163020;
+  --soil-700: #1C3D2A;
+  --soil-600: #244B34;
+
+  /* --- Leaf greens (brand) --- */
+  --leaf-700: #1B5E3F;
+  --leaf-600: #237A50;
+  --leaf-500: #2F9462;
+  --leaf-400: #4DAE7C;
+
+  /* --- Signature accent: sprout chartreuse (live AI/sensor) --- */
+  --sprout: #C8F24B;
+  --sprout-bright: #D6FF5C;
+  --sprout-dim: #A7CE3C;
+  --sprout-glow: rgba(200, 242, 75, 0.22);
+
+  /* --- Harvest amber + clay (status / warmth) --- */
+  --harvest: #ECA72C;
+  --harvest-soft: #F4C66B;
+  --clay: #D2714A;
+  --berry: #C2495E;
+
+  /* --- Paper (light marketing surfaces) --- */
+  --paper: #F6F3EA;
+  --paper-2: #EEE9DA;
+  --paper-3: #E5DECB;
+
+  /* --- Text --- */
+  --ink: #0E1F16;
+  --ink-soft: #46584D;
+  --ink-faint: #6E7F74;
+  --cloud: #EFF4EE;
+  --cloud-soft: #A7BCAD;
+  --cloud-faint: #6F857A;
+
+  /* --- Lines --- */
+  --line-dark: rgba(200, 242, 75, 0.10);
+  --line-dark-strong: rgba(200, 242, 75, 0.18);
+  --line-light: rgba(14, 31, 22, 0.10);
+
+  /* --- Type --- */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* --- Radius --- */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+  --r-pill: 999px;
+
+  /* --- Shadows --- */
+  --shadow-soft: 0 1px 2px rgba(14, 31, 22, 0.06), 0 8px 24px rgba(14, 31, 22, 0.06);
+  --shadow-card: 0 2px 6px rgba(14, 31, 22, 0.05), 0 18px 40px rgba(14, 31, 22, 0.08);
+  --shadow-dark: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  /* --- Layout --- */
+  --shell-max: 1240px;
+  --sidebar-w: 264px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ----------------------------- Reset ----------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sprout);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--sprout);
+  color: var(--soil-900);
+}
+
+/* --------------------------- Utilities --------------------------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--leaf-600);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--sprout-dim);
+}
+
+.eyebrow.on-dark {
+  color: var(--sprout);
+}
+
+.eyebrow.on-dark::before {
+  background: var(--sprout);
+}
+
+/* --------------------------- Buttons --------------------------- */
+.btn {
+  --btn-bg: var(--soil-900);
+  --btn-fg: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  border-radius: var(--r-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid transparent;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease),
+    background 0.18s var(--ease), color 0.18s var(--ease);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  --btn-bg: var(--sprout);
+  --btn-fg: var(--soil-900);
+  box-shadow: 0 8px 22px var(--sprout-glow);
+}
+
+.btn-primary:hover {
+  --btn-bg: var(--sprout-bright);
+  box-shadow: 0 12px 30px var(--sprout-glow);
+}
+
+.btn-dark {
+  --btn-bg: var(--soil-900);
+  --btn-fg: var(--cloud);
+}
+
+.btn-ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  border-color: var(--line-light);
+}
+
+.btn-ghost:hover {
+  border-color: var(--soil-900);
+  background: rgba(14, 31, 22, 0.03);
+}
+
+.btn-ghost.on-dark {
+  --btn-fg: var(--cloud);
+  border-color: var(--line-dark-strong);
+}
+
+.btn-ghost.on-dark:hover {
+  background: rgba(200, 242, 75, 0.06);
+  border-color: var(--sprout-dim);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 9px 16px;
+  font-size: 0.86rem;
+}
+
+/* --------------------------- Badges --------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-healthy {
+  background: rgba(47, 148, 98, 0.14);
+  color: var(--leaf-600);
+}
+
+.badge-warn {
+  background: rgba(236, 167, 44, 0.16);
+  color: #b97c10;
+}
+
+.badge-alert {
+  background: rgba(194, 73, 94, 0.14);
+  color: var(--berry);
+}
+
+.badge-live {
+  background: rgba(200, 242, 75, 0.16);
+  color: #5f7a16;
+}
+
+.badge.on-dark.badge-live {
+  background: rgba(200, 242, 75, 0.14);
+  color: var(--sprout);
+}
+
+.badge.on-dark.badge-healthy {
+  background: rgba(77, 174, 124, 0.18);
+  color: var(--leaf-400);
+}
+
+/* --------------------------- Cards --------------------------- */
+.card {
+  background: #fff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* --------------------------- Helpers --------------------------- */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding-inline: 18px;
+  }
+}

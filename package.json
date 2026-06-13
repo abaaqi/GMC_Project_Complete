@@ -1,0 +1,29 @@
+{
+  "name": "mahafarm",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MahaFarm — AI-empowered automated farm management platform (MERN: frontend + backend + deployment)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "docker:seed": "docker compose exec api npm run seed",
+    "server:dev": "npm --prefix server run dev",
+    "server:seed": "npm --prefix server run seed"
+  },
+  "dependencies": {
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.8"
+  }
+}

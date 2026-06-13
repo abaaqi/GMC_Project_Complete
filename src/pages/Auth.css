@@ -1,0 +1,257 @@
+.auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  background: var(--paper);
+}
+
+/* --- Aside (brand story) --- */
+.auth-aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 38px;
+  background: var(--soil-900);
+  color: var(--cloud);
+  overflow: hidden;
+}
+
+.auth-aside::after {
+  content: '';
+  position: absolute;
+  bottom: -140px;
+  left: -100px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--sprout-glow), transparent 65%);
+  pointer-events: none;
+}
+
+.auth-aside-mid {
+  position: relative;
+  max-width: 380px;
+}
+
+.auth-aside-title {
+  font-size: 2rem;
+  color: var(--cloud);
+  letter-spacing: -0.03em;
+  margin: 26px 0 14px;
+}
+
+.auth-aside-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--cloud-soft);
+}
+
+.auth-aside-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.auth-aside-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--cloud);
+}
+
+.auth-aside-list svg {
+  color: var(--sprout);
+  flex-shrink: 0;
+}
+
+.auth-aside-foot {
+  position: relative;
+  font-size: 0.74rem;
+  color: var(--cloud-faint);
+  letter-spacing: 0.06em;
+}
+
+/* --- Main (form) --- */
+.auth-main {
+  display: grid;
+  place-items: center;
+  padding: 38px 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-mobile-logo {
+  display: none;
+  margin-bottom: 28px;
+}
+
+.auth-title {
+  font-size: 1.9rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.auth-sub {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.auth-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.auth-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--r-md);
+  color: var(--ink-faint);
+  transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+
+.auth-input:focus-within {
+  border-color: var(--leaf-500);
+  box-shadow: 0 0 0 3px rgba(47, 148, 98, 0.12);
+}
+
+.auth-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 0.94rem;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.auth-eye {
+  color: var(--ink-faint);
+  display: grid;
+  place-items: center;
+}
+
+.auth-eye:hover { color: var(--ink); }
+
+.auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.auth-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.auth-check input { accent-color: var(--leaf-600); width: 15px; height: 15px; }
+
+.auth-terms { margin-top: 2px; }
+
+.auth-link {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--leaf-600);
+}
+
+.auth-link:hover { text-decoration: underline; }
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0;
+  color: var(--ink-faint);
+  font-size: 0.82rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line-light);
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-top: 24px;
+}
+
+.auth-switch a {
+  font-weight: 600;
+  color: var(--leaf-600);
+}
+
+.auth-switch a:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .auth { grid-template-columns: 1fr; }
+  .auth-aside { display: none; }
+  .auth-mobile-logo { display: block; }
+}
+
+@media (max-width: 480px) {
+  .auth-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* --- Inline error banner (auth failures) --- */
+.auth-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  margin-bottom: 18px;
+  border-radius: var(--r-md);
+  background: rgba(194, 73, 94, 0.1);
+  border: 1px solid rgba(194, 73, 94, 0.25);
+  color: var(--berry);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.auth-error svg {
+  flex-shrink: 0;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

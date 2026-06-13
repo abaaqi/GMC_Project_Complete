@@ -1,0 +1,220 @@
+.market-page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.market-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.market-cats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.market-cat {
+  padding: 9px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-light);
+  background: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  transition: all 0.16s var(--ease);
+}
+
+.market-cat:hover {
+  border-color: var(--leaf-500);
+  color: var(--ink);
+}
+
+.market-cat.is-active {
+  background: var(--soil-900);
+  border-color: var(--soil-900);
+  color: var(--cloud);
+}
+
+.market-cart-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--r-pill);
+  background: var(--sprout);
+  color: var(--soil-900);
+  font-weight: 600;
+}
+
+.market-cart-count {
+  font-size: 0.9rem;
+}
+
+.market-cart-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(14, 31, 22, 0.2);
+}
+
+.market-cart-total {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* --- Grid --- */
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.product-thumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 120px;
+  background: linear-gradient(135deg, var(--paper-2), var(--paper-3));
+  color: var(--leaf-600);
+}
+
+.product-grade {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  background: var(--soil-900);
+  color: var(--sprout);
+}
+
+.product-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.product-name {
+  font-size: 1.02rem;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.product-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.product-trend.is-up { color: var(--leaf-600); }
+.product-trend.is-down { color: var(--clay); }
+
+.product-seller {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 2px;
+  padding-block: 8px;
+  border-top: 1px solid var(--line-light);
+}
+
+.product-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.product-unit {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+
+.product-stock {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.product-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+  border-radius: var(--r-pill);
+  background: var(--paper-2);
+}
+
+.product-stepper button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--soil-900);
+  color: var(--sprout);
+  transition: transform 0.15s var(--ease);
+}
+
+.product-stepper button:hover { transform: scale(1.08); }
+
+.product-qty {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 1100px) {
+  .market-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .market-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .market-grid { grid-template-columns: 1fr; }
+}
