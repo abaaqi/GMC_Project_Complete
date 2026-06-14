@@ -1,13 +1,23 @@
 # Netlify config for the MahaFarm frontend (SPA).
-# Set VITE_API_BASE_URL and VITE_ENABLE_MOCK_DATA in Site settings → Environment.
+# Set VITE_API_BASE_URL=/api and VITE_ENABLE_MOCK_DATA=false in Site settings → Environment.
 
 [build]
   command = "npm run build"
   publish = "dist"
 
-# Client-side routing fallback
+[build.environment]
+  NODE_VERSION = "20"
+
+# Proxy API calls to the Render backend (same-origin → no CORS, cookies work).
+# Must come BEFORE the SPA fallback.
 [[redirects]]
-     from = "/api/*"
-     to = "https://gmc-project-complete.onrender.com/api/:splat"
-     status = 200
-     force = true
+  from = "/api/*"
+  to = "https://gmc-project-complete.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# SPA fallback — every other route serves index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
